@@ -1,0 +1,64 @@
+<div class="app-work">
+  <div class="body">
+    <mat-card class="signin-form">
+      <!-- Header -->
+      <mat-card-header>
+        <div mat-card-avatar class="logo-image"></div>
+        <mat-card-title>Angular Study</mat-card-title>
+        <mat-card-subtitle>Authentication</mat-card-subtitle>
+      </mat-card-header>
+      <br>
+
+      <!-- Content -->
+      <mat-card-content>
+
+        <!-- Username -->
+        <mat-form-field class="fullwidth">
+          <mat-label>Username</mat-label>
+          <input type="text" placeholder="Username" matInput [value]="username"/>
+        </mat-form-field>
+
+        <!-- Password -->
+        <mat-form-field class="fullwidth">
+          <mat-label>Password</mat-label>
+          <input type="text" placeholder="Password" matInput />
+        </mat-form-field>
+
+        <!-- Smaple -->
+        <mat-form-field appearance="outline" class="fullwidth">
+          <mat-label>Label</mat-label>
+          <input type="text" placeholder="Mobile Phone" matInput />
+          <mat-hint>DD/MMM/YYYY</mat-hint>
+        </mat-form-field>
+
+        <br /><br />
+
+        <!-- Moblie Phone -->
+        <mat-form-field appearance="outline" class="fullwidth">
+          <mat-label>Mobile Phone</mat-label>
+          <span matTextPrefix>+95 &nbsp;</span>
+          <input type="text" placeholder="Mobile Phone" matInput />
+          <mat-hint>09123456789</mat-hint>
+            <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+
+        <br /><br />
+
+        <!-- Email -->
+        <mat-form-field appearance="outline" class="fullwidth">
+          <mat-label>Email</mat-label>
+          <input type="text" placeholder="Email" matInput />
+          <span matTextSuffix>&#64; phh.com</span>
+        </mat-form-field>
+
+      </mat-card-content>
+
+      <!-- Actions -->
+      <mat-card-actions>
+        <button mat-flat-button>SIGN-IN</button>
+
+        <button mat-flat-button (click)="goToHome()">Home</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
