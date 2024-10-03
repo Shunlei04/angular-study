@@ -1,0 +1,16 @@
+.body {
+  padding: 32px;
+
+  .signin-form {
+    width: 330px;
+  }
+
+  .logo-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+
+  mat-card-actions {
+    padding: 0 16px;
+  }
+}

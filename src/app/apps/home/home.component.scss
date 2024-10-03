@@ -1,0 +1,38 @@
+.app-window {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow: hidden;
+
+  .header {
+    padding: 16px;
+    overflow: hidden;
+
+    .title {
+      font-weight: bold;
+      font-size: x-large;
+    }
+  }
+
+  .body {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    flex-direction: column;
+
+    .content-container {
+      flex: 1;
+      display: flex;
+      overflow: auto;
+      flex-direction: column;
+
+      p {
+        margin: 4px 0px;
+      }
+    }
+
+    app-table-pages {
+      background: lightyellow;
+    }
+  }
+}

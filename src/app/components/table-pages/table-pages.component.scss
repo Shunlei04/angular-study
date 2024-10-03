@@ -1,0 +1,17 @@
+.app-window {
+  display: flex;
+
+  .body {
+    display: flex;
+    padding: 8px;
+
+    button {
+      margin: 0px 4px;
+    }
+
+    button[active='true'] {
+        background-color: green;
+        color: white;
+      }
+  }
+}
