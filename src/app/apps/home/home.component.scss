@@ -5,12 +5,25 @@
   overflow: hidden;
 
   .header {
-    padding: 16px;
+    display: flex;
+    flex-direction: row;
     overflow: hidden;
+    padding: 16px;
+    background-color: lightgoldenrodyellow;
+    align-items: center;
 
     .title {
       font-weight: bold;
       font-size: x-large;
+      margin: 0 6px;
+    }
+    
+    .first-page{
+      margin: 0 16px;
+    }
+
+    .last-page{
+      margin: 0 16px;
     }
   }
   .body {
@@ -25,13 +38,19 @@
       overflow: auto;
       flex-direction: column;
 
-      p {
+      .user-list {
         margin: 4px 0px;
+        padding: 8px;
+        background-color: lightblue;
       }
     }
 
-    app-table-pages {
-      background: lightyellow;
+    .table-footer {
+      display: flex;
+      flex-direction: row;
+      background-color: lightgoldenrodyellow;
+      align-items: center;
+      justify-content: center;
     }
   }
 }
