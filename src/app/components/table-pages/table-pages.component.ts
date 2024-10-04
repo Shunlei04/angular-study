@@ -11,5 +11,6 @@ import { MatButtonModule } from '@angular/material/button';
 export class TablePagesComponent {
   @Input() activePage: number = 4;
   @Input() pageList: number[] = new Array(7);
+
   constructor() {}
 }
