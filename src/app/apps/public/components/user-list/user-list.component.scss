@@ -1,3 +1,9 @@
+:host(.app-host) {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
 .app-window {
   display: flex;
   flex: 1;
@@ -17,12 +23,12 @@
       font-size: x-large;
       margin: 0 6px;
     }
-    
-    .first-page{
+
+    .first-page {
       margin: 0 16px;
     }
 
-    .last-page{
+    .last-page {
       margin: 0 16px;
     }
   }

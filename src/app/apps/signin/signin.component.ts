@@ -28,17 +28,19 @@ import { Router } from '@angular/router';
     MatInputModule,
   ],
 })
-export class SigninComponent implements OnDestroy, OnInit {
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+export class SigninComponent implements OnDestroy {
   @Input() username: string = 'SLKT';
 
   private route = inject(Router);
 
-  goToHome() {
-    this.route.navigate(['home'], { replaceUrl: false });
+  goToPrivate() {
+    this.route.navigate(['app/private'], { replaceUrl: false });
   }
+
+  goToPublic() {
+    this.route.navigate(['app/public'], { replaceUrl: false });
+  }
+
   ngOnDestroy(): void {
     console.log('Home Component is destroyed.');
   }

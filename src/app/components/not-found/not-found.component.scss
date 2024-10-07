@@ -1,0 +1,23 @@
+:host(.app-host){
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.app-window{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  .header{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    .title{
+      font-size: x-large;
+    }
+  }
+
+}
