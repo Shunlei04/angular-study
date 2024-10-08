@@ -5,6 +5,7 @@
         mat-icon-button
         [attr.active]="$index + 1 == activePage"
         (click)="selectPage($index)"
+        [matTooltip]="'Page' + ($index + 1)"
         color="primary"
       >
         {{ $index + 1 }}

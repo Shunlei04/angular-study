@@ -4,8 +4,8 @@ import { CanActivateFn } from '@angular/router';
 import { appFrameGuard } from './app-frame.guard';
 
 describe('appFrameGuard', () => {
-  const executeGuard: CanActivateFn = (...guardParameters) => 
-      TestBed.runInInjectionContext(() => appFrameGuard(...guardParameters));
+  const executeGuard: CanActivateFn = (...guardParameters) =>
+    TestBed.runInInjectionContext(() => appFrameGuard(...guardParameters));
 
   beforeEach(() => {
     TestBed.configureTestingModule({});

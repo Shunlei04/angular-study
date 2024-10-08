@@ -8,9 +8,8 @@ describe('PrivateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PrivateComponent]
-    })
-    .compileComponents();
+      imports: [PrivateComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PrivateComponent);
     component = fixture.componentInstance;

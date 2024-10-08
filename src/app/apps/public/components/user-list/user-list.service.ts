@@ -15,7 +15,7 @@ export class UserListService {
         .get<UserType[]>(`${AppEnvValues.Server_Url}/pse-team/users`)
         .subscribe({
           next: (users) => {
-            console.log(users);
+            // console.log(users);
             res(users);
           },
           error: (error: any) => {

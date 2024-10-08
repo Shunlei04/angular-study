@@ -1,0 +1,22 @@
+.app-window {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+
+    .title {
+      font-size: x-large;
+      font-weight: bold;
+    }
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+  }
+}
