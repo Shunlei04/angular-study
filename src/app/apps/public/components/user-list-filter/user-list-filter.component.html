@@ -1,0 +1,86 @@
+<div class="app-window">
+  <div class="header">
+    <div class="title">Filter User List</div>
+  </div>
+  <div class="body">
+    <!-- Date -->
+    <p>Date Value : {{ pickedDate | date: 'MMM dd,yyyy: hh:mm a' }}</p>
+    <mat-form-field appearance="outline">
+      <mat-label> Filter </mat-label>
+      <input type="text" matInput placeholder="filter" />
+    </mat-form-field>
+
+    <br />
+
+    <!-- Select Option -->
+    <mat-form-field appearance="outline">
+      <mat-label>Select Single Option</mat-label>
+      <mat-select
+        placeholder="Select Single Option"
+        [formControl]="selectOptionFormControl"
+        [panelWidth]="null"
+      >
+        @for (option of selectOptionsList; track $index) {
+          <mat-option [value]="option">{{ option }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <br />
+
+    <!-- Select Multiple Option -->
+    <mat-form-field appearance="outline">
+      <mat-label>Select Multiple Option</mat-label>
+      <mat-select
+        placeholder="Select Single Option"
+        multiple=""
+        [formControl]="selectMultipleOptionFormControl"
+      >
+        <!-- Select Trigger -->
+        <mat-select-trigger
+          >{{ selectedOptions[0] }}
+          <span class="additional-selection">{{ countOtherOptions() }}</span>
+        </mat-select-trigger>
+
+        @for (option of selectOptionsList; track $index) {
+          <mat-option [value]="option">{{ option }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Date Picker</mat-label>
+      <input
+        matInput
+        [matDatepicker]="datePicker"
+        [formControl]="dateFormControl"
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="datePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #datePicker></mat-datepicker>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Date Range Picker</mat-label>
+
+      <mat-date-range-input [rangePicker]="dateRangePicker" [formGroup]="dateRangeFormGroup">
+        <input matStartDate  formControlName="start">
+        <input matEndDate  formControlName="end">
+      </mat-date-range-input>
+
+      <mat-datepicker-toggle matIconSuffix [for]="dateRangePicker"></mat-datepicker-toggle>
+
+      <mat-date-range-picker #dateRangePicker></mat-date-range-picker>
+    </mat-form-field>
+
+    <br />
+
+    <button mat-stroked-button>Filter Data</button>
+  </div>
+</div>

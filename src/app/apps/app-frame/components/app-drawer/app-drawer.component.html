@@ -1,0 +1,11 @@
+<mat-drawer-container>
+  <!-- Drawer -->
+  <mat-drawer #drawer mode="over" [style]="'width : ' + drawerWidth">
+    <ng-template [cdkPortalOutlet]="selectedPortal"></ng-template>
+  </mat-drawer>
+
+  <!-- Content -->
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

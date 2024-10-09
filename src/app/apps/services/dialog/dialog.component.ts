@@ -15,5 +15,4 @@ export class DialogComponent {
       console.log(this.dialog);
     });
   }
-
 }

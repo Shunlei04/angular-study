@@ -10,12 +10,14 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'home',
+        redirectTo: 'user-list',
       },
       {
-        path: 'home',
+        path: 'user-list',
         loadComponent: () =>
-          import('./components/user-list/user-list.component').then((c) => c.UserListComponent),
+          import('./components/user-list/user-list.component').then(
+            (c) => c.UserListComponent,
+          ),
       },
     ],
   },

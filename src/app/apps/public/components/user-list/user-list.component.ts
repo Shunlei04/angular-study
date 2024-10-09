@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -13,6 +19,8 @@ import { TablePagesComponent } from '../../../../components/table-pages/table-pa
 import { UserListService } from './user-list.service';
 import { UserType } from './user-list.type';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { AppDrawerService } from '../../../app-frame/components/app-drawer/app-drawer.service';
+import { UserListFilterComponent } from '../user-list-filter/user-list-filter.component';
 
 @Component({
   selector: 'app-user-list',
@@ -37,9 +45,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     // Components
     TablePagesComponent,
     TableFirstLastComponent,
+    UserListFilterComponent,
   ],
 })
-export class UserListComponent implements OnInit, AfterViewInit {
+export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('tablePaginator') tablePaginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -62,12 +71,17 @@ export class UserListComponent implements OnInit, AfterViewInit {
     'name',
     'age',
     'gender',
-    'religion',
+    'race',
     'occupation',
     'menu',
   ];
 
-  constructor(private homeService: UserListService) {
+  displayedColums2: string[] = ['religion', 'address'];
+
+  constructor(
+    private homeService: UserListService,
+    private appDrawerService: AppDrawerService,
+  ) {
     this.homeService.getUserFromServer().then((users) => {
       this.userList = users;
       this.filterUserList('');
@@ -80,13 +94,18 @@ export class UserListComponent implements OnInit, AfterViewInit {
       },
     });
   }
+
   ngOnInit(): void {
     // console.log(this.tablePaginator);
   }
+
   ngAfterViewInit() {
     // console.log(this.tablePaginator);
     this.dataSource.paginator = this.tablePaginator;
     this.dataSource.sort = this.sort;
+    this.openPortal();
+
+    // this.appDrawerService.openDrawer();
   }
 
   pageChanged(pageNo: number) {
@@ -134,5 +153,21 @@ export class UserListComponent implements OnInit, AfterViewInit {
     //     this.filteredUserList.push(user);
     //   }
     // });
+  }
+
+  openDrawer() {
+    this.appDrawerService.openDrawer();
+  }
+
+  openPortal() {
+    this.appDrawerService.setDrawerWidth('400px');
+    this.appDrawerService.setPortalComponent(UserListFilterComponent);
+    this.appDrawerService.openDrawer();
+  }
+
+  ngOnDestroy() {
+    this.appDrawerService.closeDrawer();
+    this.appDrawerService.setPortalComponent(null);
+    this.appDrawerService.setDrawerWidth();
   }
 }
