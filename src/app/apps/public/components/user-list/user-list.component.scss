@@ -4,6 +4,30 @@
   overflow: hidden;
 }
 
+mat-tab-group {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+
+  ::ng-deep .mat-mdc-tab-body-wrapper {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+  
+    .mat-mdc-tab-body {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+  
+    .mat-mdc-tab-body-content {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+  }
+}
+
 .app-window {
   display: flex;
   flex: 1;
@@ -61,38 +85,38 @@
   }
 }
 
-.mat-column-no{
+.mat-column-no {
   min-width: 80px;
   max-width: 80px;
   text-align: center;
 }
 
-.mat-column-name{
+.mat-column-name {
   min-width: 200px;
   max-width: 200px;
 }
 
-.mat-column-age{
+.mat-column-age {
   min-width: 100px;
   max-width: 100px;
 }
 
-.mat-column-gender{
+.mat-column-gender {
   min-width: 150px;
   max-width: 150px;
 }
 
-.mat-column-race{
+.mat-column-race {
   min-width: 150px;
   max-width: 150px;
 }
 
-.mat-column-religion{
+.mat-column-religion {
   min-width: 150px;
   max-width: 150px;
 }
 
-.mat-column-occupation{
+.mat-column-occupation {
   min-width: 550px;
   max-width: 550px;
 }

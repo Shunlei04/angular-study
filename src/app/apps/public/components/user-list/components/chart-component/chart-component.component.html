@@ -1,0 +1,130 @@
+<div class="app-window">
+  <div class="header">
+    <div class="title">Chips</div>
+
+    <button mat-flat-button (click)="changeToDarkMode()">Dark mode</button>
+  </div>
+  <div class="body">
+    <p>Chip Set</p>
+    <mat-chip-set>
+      @for (fruit of chipsList; track $index) {
+        <mat-chip>
+          <img
+            matChipAvatar
+            src="https://material.angular.io/assets/img/examples/shiba1.jpg"
+            alt="Photo of a Shiba Inu"
+          />
+
+          {{ fruit }}
+
+          <button matChipRemove (click)="removeChip(fruit)">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip>
+      }
+    </mat-chip-set>
+
+    <!-- Chip option list -->
+    <p>Chip Option List</p>
+    <mat-chip-listbox multiple="" [formControl]="chipOptionListFormControl">
+      @for (fruit of chipsList; track $index) {
+        <mat-chip-option> {{ fruit }}</mat-chip-option>
+      }
+    </mat-chip-listbox>
+
+    <!-- Mat chip grip -->
+    <p>Chip grid</p>
+    <mat-form-field>
+      <mat-label>Fruits</mat-label>
+
+      <mat-chip-grid #chipGrid>
+        @for (item of chipGridItemList; track $index) {
+          <mat-chip-row
+            >{{ item }}
+            <button matChipRemove (click)="removeChipGripItem(item)">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip-row>
+        }
+      </mat-chip-grid>
+
+      <input
+        matInput
+        placeholder="Friuts"
+        [matChipInputFor]="chipGrid"
+        (matChipInputTokenEnd)="addChipGridItem($event)"
+      />
+    </mat-form-field>
+
+    <button [mat-menu-trigger-for]="appMenu">
+      <mat-icon> menu </mat-icon>
+    </button>
+
+    <br />
+
+    <h1>Form Control Error</h1>
+
+    <div class="login-form" [formGroup]="loginFormGroup">
+      <mat-form-field appearance="outline">
+        <mat-label>Login</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="username"
+          formControlName="username"
+        />
+
+        @if (loginFormGroup.hasError('required', 'username')) {
+          <mat-error>Username is required</mat-error>
+        }
+
+        @if (loginFormGroup.hasError('pattern', 'username')) {
+          <mat-error>Username is wrong.</mat-error>
+        }
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="password"
+          formControlName="password"
+        />
+
+        @if (loginFormGroup.hasError('required', 'password')) {
+          <mat-error>Password is required</mat-error>
+        }
+
+        @if (loginFormGroup.hasError('invalidPassword', 'password')) {
+          <mat-error>Password is required</mat-error>
+        }
+      </mat-form-field>
+      <button mat-stroked-button>LOGIN</button>
+    </div>
+
+    <!-- App Menu -->
+    <mat-menu #appMenu>
+      <button mat-menu-item>
+        <mat-icon>logout</mat-icon>
+        Log Out
+      </button>
+
+      <!-- Nested Menu -->
+      <button mat-menu-item [matMenuTriggerFor]="nestedMenu">
+        <mat-icon>menu</mat-icon>
+        Nested Menu
+      </button>
+    </mat-menu>
+
+    <!-- Nested Menu -->
+    <mat-menu #nestedMenu>
+      <button mat-menu-item>
+        <mat-icon>person</mat-icon>
+        Person
+      </button>
+    </mat-menu>
+  </div>
+</div>

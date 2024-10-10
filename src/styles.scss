@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
+@use './themes.scss';
 @use './resources/assets/styles/inputformfield.scss';
 
 // App
@@ -36,6 +36,6 @@ app-root {
   box-sizing: border-box;
 }
 
-.spacer{
+.spacer {
   flex: 1;
 }

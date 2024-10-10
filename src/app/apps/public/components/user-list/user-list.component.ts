@@ -21,6 +21,8 @@ import { UserType } from './user-list.type';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AppDrawerService } from '../../../app-frame/components/app-drawer/app-drawer.service';
 import { UserListFilterComponent } from '../user-list-filter/user-list-filter.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ChartComponentComponent } from './components/chart-component/chart-component.component';
 
 @Component({
   selector: 'app-user-list',
@@ -39,12 +41,14 @@ import { UserListFilterComponent } from '../user-list-filter/user-list-filter.co
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
+    MatTabsModule,
     MatTooltipModule,
     ReactiveFormsModule,
 
     // Components
-    TablePagesComponent,
+    ChartComponentComponent,
     TableFirstLastComponent,
+    TablePagesComponent,
     UserListFilterComponent,
   ],
 })

@@ -1,0 +1,22 @@
+:host(.app-host) {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  .app-window {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    .body {
+      display: flex;
+      flex-direction: column;
+      overflow: auto;
+
+      .login-form{
+        display: flex;
+        flex-direction: column   ;
+      }
+    }
+  }
+}

@@ -22,12 +22,12 @@ import { MatSelectModule } from '@angular/material/select';
 
     // Module
     MatButtonModule,
+    MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
+    MatNativeDateModule,
     MatSelectModule,
     ReactiveFormsModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
   ],
   // providers: [DatePipe],
 })
