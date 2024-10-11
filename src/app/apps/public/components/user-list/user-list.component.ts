@@ -107,7 +107,7 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
     // console.log(this.tablePaginator);
     this.dataSource.paginator = this.tablePaginator;
     this.dataSource.sort = this.sort;
-    this.openPortal();
+    // this.openPortal();
 
     // this.appDrawerService.openDrawer();
   }

@@ -5,18 +5,14 @@ import {
   FormGroup,
   ReactiveFormsModule,
   Validators,
-  ValueChangeEvent,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import {
-  MatChipEvent,
-  MatChipInputEvent,
-  MatChipsModule,
-} from '@angular/material/chips';
+import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { ThemesNameEnum } from '../../../../../../../resources/enums/themes.enum';
 
 @Component({
   selector: 'app-chart-component',
@@ -27,23 +23,26 @@ import { MatMenuModule } from '@angular/material/menu';
   },
   standalone: true,
   imports: [
+    MatButtonModule,
     MatChipsModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    ReactiveFormsModule,
-    MatButtonModule,
     MatMenuModule,
+    ReactiveFormsModule,
   ],
 })
 export class ChartComponentComponent implements AfterViewInit {
   chipsList: string[] = ['apple', 'mango', 'orange'];
-  chipGridItemList: string[] = [];
+  chipsGridItemList: string[] = [];
 
   // Chip option list
   chipOptionListFormControl = new FormControl();
 
   chipGridFormControl = new FormControl();
+
+  // theme name
+  themeNameEnum = ThemesNameEnum;
 
   // username form control
   loginFormGroup = new FormGroup({
@@ -99,7 +98,7 @@ export class ChartComponentComponent implements AfterViewInit {
   }
 
   addChipGridItem(event: MatChipInputEvent) {
-    this.chipGridItemList.push(event.value);
+    this.chipsGridItemList.push(event.value);
     event.chipInput.clear();
   }
 
@@ -107,11 +106,20 @@ export class ChartComponentComponent implements AfterViewInit {
     this.chipsList = this.chipsList.filter((c) => c != fruit);
   }
 
-  removeChipGripItem(item: string) {
-    this.chipGridItemList = this.chipGridItemList.filter((c) => c != item);
+  removeGridChip(item: string) {
+    this.chipsGridItemList = this.chipsGridItemList.filter((c) => c != item);
   }
 
-  changeToDarkMode() {
-    document.body.setAttribute('mode', 'dark');
+  changeTheme(theme: ThemesNameEnum) {
+    document.documentElement.setAttribute('theme', theme);
+  }
+
+  toggleMode() {
+    const mode = document.body.getAttribute('mode');
+    if (mode != 'dark') {
+      document.body.setAttribute('mode', 'dark');
+    } else {
+      document.body.setAttribute('mode', 'light');
+    }
   }
 }

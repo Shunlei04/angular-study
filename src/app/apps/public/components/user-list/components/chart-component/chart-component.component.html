@@ -2,7 +2,29 @@
   <div class="header">
     <div class="title">Chips</div>
 
-    <button mat-flat-button (click)="changeToDarkMode()">Dark mode</button>
+    <button mat-flat-button (click)="changeTheme(themeNameEnum.Green)">
+      Green Theme
+    </button>
+
+    <button mat-flat-button (click)="changeTheme(themeNameEnum.Yellow)">
+      Yellow Theme
+    </button>
+
+    <button mat-flat-button (click)="changeTheme(themeNameEnum.Red)">
+      Red Theme
+    </button>
+
+    <button mat-flat-button (click)="changeTheme(themeNameEnum.Peace)">
+      Favourite Theme
+    </button>
+
+    <button mat-flat-button (click)="toggleMode()">Mode</button>
+    <div class="button">
+      <button mat-flat-button class="primary-button">Primary</button>
+      <button mat-flat-button class="secondary-button">Secondary</button>
+      <button mat-flat-button class="tertiary-button">Tertiary</button>
+      <button mat-flat-button class="error-button">Error</button>
+    </div>
   </div>
   <div class="body">
     <p>Chip Set</p>
@@ -14,9 +36,7 @@
             src="https://material.angular.io/assets/img/examples/shiba1.jpg"
             alt="Photo of a Shiba Inu"
           />
-
           {{ fruit }}
-
           <button matChipRemove (click)="removeChip(fruit)">
             <mat-icon>cancel</mat-icon>
           </button>
@@ -24,107 +44,115 @@
       }
     </mat-chip-set>
 
-    <!-- Chip option list -->
-    <p>Chip Option List</p>
-    <mat-chip-listbox multiple="" [formControl]="chipOptionListFormControl">
+    <!--Chip Option Lists-->
+    <p>Chip Option Lists</p>
+    <mat-chip-listbox multiple>
       @for (fruit of chipsList; track $index) {
-        <mat-chip-option> {{ fruit }}</mat-chip-option>
+        <mat-chip-option>{{ fruit }}</mat-chip-option>
       }
     </mat-chip-listbox>
 
-    <!-- Mat chip grip -->
-    <p>Chip grid</p>
+    <!--Chip Grid-->
+    <p>Chip Grid</p>
     <mat-form-field>
       <mat-label>Fruits</mat-label>
 
       <mat-chip-grid #chipGrid>
-        @for (item of chipGridItemList; track $index) {
-          <mat-chip-row
-            >{{ item }}
-            <button matChipRemove (click)="removeChipGripItem(item)">
+        @for (item of chipsGridItemList; track $index) {
+          <mat-chip-row>
+            <img
+              matChipAvatar
+              src="https://material.angular.io/assets/img/examples/shiba1.jpg"
+              alt="Photo of a Shiba Inu"
+            />{{ item }}
+            <button matChipRemove (click)="removeGridChip(item)">
               <mat-icon>cancel</mat-icon>
-            </button>
-          </mat-chip-row>
+            </button></mat-chip-row
+          >
         }
       </mat-chip-grid>
 
       <input
         matInput
-        placeholder="Friuts"
+        placeholder="Fruits"
         [matChipInputFor]="chipGrid"
         (matChipInputTokenEnd)="addChipGridItem($event)"
       />
     </mat-form-field>
 
-    <button [mat-menu-trigger-for]="appMenu">
-      <mat-icon> menu </mat-icon>
+    <!--Menu Button-->
+    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+      <mat-icon>menu</mat-icon>
     </button>
 
+    <!--New Section-->
     <br />
 
     <h1>Form Control Error</h1>
 
     <div class="login-form" [formGroup]="loginFormGroup">
+      <!--Username-->
       <mat-form-field appearance="outline">
-        <mat-label>Login</mat-label>
+        <mat-label>Username</mat-label>
         <input
-          type="text"
           matInput
-          placeholder="username"
+          type="text"
+          placeholder="Username"
           formControlName="username"
         />
 
+        <!--Error-->
         @if (loginFormGroup.hasError('required', 'username')) {
-          <mat-error>Username is required</mat-error>
+          <mat-error>Username is <b>required</b></mat-error>
         }
 
+        <!--Error-->
         @if (loginFormGroup.hasError('pattern', 'username')) {
-          <mat-error>Username is wrong.</mat-error>
+          <mat-error>Username is <b>wrong</b></mat-error>
         }
       </mat-form-field>
 
-      <br />
-
+      <!--Password-->
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
         <input
-          type="text"
           matInput
-          placeholder="password"
+          type="text"
+          placeholder="Password"
           formControlName="password"
         />
 
+        <!--Error-->
         @if (loginFormGroup.hasError('required', 'password')) {
-          <mat-error>Password is required</mat-error>
+          <mat-error>Password is <b>required</b></mat-error>
         }
 
+        <!--Error-->
         @if (loginFormGroup.hasError('invalidPassword', 'password')) {
-          <mat-error>Password is required</mat-error>
+          <mat-error>Password is <b>invalid</b></mat-error>
         }
       </mat-form-field>
-      <button mat-stroked-button>LOGIN</button>
+
+      <!--Login Button-->
+      <button mat-stroked-button>Login</button>
     </div>
-
-    <!-- App Menu -->
-    <mat-menu #appMenu>
-      <button mat-menu-item>
-        <mat-icon>logout</mat-icon>
-        Log Out
-      </button>
-
-      <!-- Nested Menu -->
-      <button mat-menu-item [matMenuTriggerFor]="nestedMenu">
-        <mat-icon>menu</mat-icon>
-        Nested Menu
-      </button>
-    </mat-menu>
-
-    <!-- Nested Menu -->
-    <mat-menu #nestedMenu>
-      <button mat-menu-item>
-        <mat-icon>person</mat-icon>
-        Person
-      </button>
-    </mat-menu>
   </div>
 </div>
+
+<!--App Menu-->
+<mat-menu #appMenu>
+  <button mat-menu-item><mat-icon>logout</mat-icon> Log out</button>
+
+  <!--Nested Menu-->
+  <button mat-menu-item [matMenuTriggerFor]="nestedMenu">
+    <mat-icon>menu</mat-icon>Nested Menu
+  </button>
+</mat-menu>
+
+<!-- Nested Menu -->
+<mat-menu #nestedMenu>
+  <button mat-menu-item>
+    <mat-icon>person</mat-icon>
+    Person
+  </button>
+</mat-menu>

@@ -1,0 +1,7 @@
+@use './app-frame.theme.scss' as app-frame;
+@use './mat-component-variant.theme.scss' as mat;
+
+@mixin apply-all-mixin($theme) {
+  @include app-frame.apply-app-frame-theme($theme);
+  @include mat.mat-component-variants($theme);
+}
